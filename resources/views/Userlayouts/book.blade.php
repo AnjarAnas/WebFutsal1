@@ -37,10 +37,34 @@
                           <td>{{"Rp ".number_format($b->harga)}}</td>
                           <td>{{$b->nama_lap}}</td>
                           <td>{{$b->waktu}}</td>
-                          <td><div class="badge badge-success"><span id="demo{{$b->id_bayar}}"></span></div></td>
+                          <td>
+                            @if ($b->status=="Dalam Proses")
+                            <div class="badge badge-success"><span id="demo{{$b->id_bayar}}"></span></div></td>
+                            @elseif ($b->status=="Belum Dibayar")
+                            <div class="badge badge-success"><span id="demo{{$b->id_bayar}}"></span></div></td>
+                            @elseif ($b->status="settlement")
+                            <div class="badge badge-success">{{$b->status}}</div></td>
+                            @endif
+                            
                           <td>{{date('d F Y',strtotime($b->tanggal))}}</td>
-                          <td><div class="badge badge-danger">{{$b->status}}</div></td>
-                          <td><a href="/bayar/{{$b->id_bayar}}" class="btn btn-danger" style="border-radius: 10px">Bayar</a></td>
+                          <td>
+                           @if ($b->status=="Dalam Proses" || $b->status=="Belum Dibayar")
+                           <div class="badge badge-danger">{{$b->status}}</div>
+                           @else
+                           <div class="badge badge-success">Sudah Dibayar</div>
+                           @endif
+                            
+                          </td>
+                          
+                          <td>
+                            @if ($b->status=="Dalam Proses")
+                            <a href="/bayar/{{$b->id_bayar}}" class="btn btn-warning" style="border-radius: 10px">Status</a>
+                            @elseif ($b->status=="Belum Dibayar")
+                            <a href="/bayar/{{$b->id_bayar}}" class="btn btn-danger" style="border-radius: 10px">Bayar</a>
+                            @else
+                            <a href="/bayar/{{$b->id_bayar}}" class="btn btn-success" style="border-radius: 10px">Struck</a>
+                            @endif
+                            </td>
                       </tr>
 
                   @endforeach
@@ -83,7 +107,7 @@
   
     // If the count down is finished, write some text
     if (distance{{$b->id_bayar}} < 0) {
-      if("{{$b->status}}"==="Belum Dibayar"){
+      if("{{$b->status}}"==="Belum Dibayar" || "{{$b->status}}"==="Dalam Proses"){
         document.getElementById("demo{{$b->id_bayar}}").innerHTML = "EXPIRED";
         clearInterval(x);
         $.ajax({

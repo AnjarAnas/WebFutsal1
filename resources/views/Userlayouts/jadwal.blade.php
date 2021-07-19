@@ -2,7 +2,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-      <h1>Jadwal Petandingan Lapangan 2</h1>
+      <h1>Jadwal Petandingan Lapangan {{($id==1) ? '1':'2'}}</h1>
       <div class="section-header-breadcrumb">
         
       </div>
@@ -27,23 +27,28 @@
             </form>
           <div class="card">  
           @foreach ($tanggal as $a)
+            
               <div class="card">
                 <div class="card-header">
                   {{date('d F Y',strtotime($a->tanggal))}}
                 </div>
                 <div class="card-body">
                   @foreach ($detail as $d)
-                  @if ($a->tanggal==$d->tanggal)
-                    <div class="card">
-                      <div class="card-header">{{$d->nama}}</div>
-                      <div class="card-body">
-                        {{$d->waktu}}
+                  
+                    @if ($a->tanggal==$d->tanggal)
+                    @if($d->kondisi==2)
+                      <div class="card">
+                        <div class="card-header">{{$d->nama}}</div>
+                        <div class="card-body">
+                          {{$d->waktu}}
+                        </div>
                       </div>
-                    </div>
+                    @endif
                   @endif
                   @endforeach
                 </div>
               </div>
+            
               @endforeach
           </div>
         </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BayarController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Role;
@@ -32,5 +33,6 @@ Route::group(['middleware'=>['auth','role:2']],function(){
     Route::get('/book',[UserController::class,'dataBook']);
     Route::get('/lap/{id}',[UserController::class,'lapangan']);
     Route::get('/logout',[LoginController::class,'logout']);
+    Route::get('/bayar/{id}',[BayarController::class,'bayar']);
 });
 

@@ -56,10 +56,10 @@
             <li class="nav-item {{(Request::is('maps'))? 'active': ''}}">
               <a href="/maps" class="nav-link"><i class="far fa-heart"></i><span>Denah Lokasi</span></a>
             </li>
-            <li class="nav-item {{(Request::is('book'))? 'active': ''}}">
+            <li class="nav-item {{(Request::is('book')) || (Request::is('bayar/*'))? 'active': ''}}">
               <a href="/book" class="nav-link"><i class="far fa-heart"></i><span>Data Book User</span></a>
             </li>
-            <li class="nav-item dropdown {{(Request::is('lap/*'))? 'active': ''}}">
+            <li class="nav-item dropdown {{(Request::is('lap/*')) ||(Request::is('jadwal/*'))? 'active': ''}}">
               <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="far fa-clone"></i><span>Booking Lapangan</span></a>
               <ul class="dropdown-menu">
                 <li class="nav-item"><a href="/lap/{{1}}" class="nav-link">Lapangan 1</a></li>

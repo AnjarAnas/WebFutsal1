@@ -53,7 +53,7 @@ class UserController extends Controller
         $add_15=strtotime('+15 minutes',strtotime($date_now));
         $date_result=date('Y-m-d H:i:s',$add_15);
         
-        $jlm_book=str_replace(".", "", $req->uang);
+        $jlm_book=str_replace(",", "", $req->uang);
         $id_waktu=$req->waktu;
         $id_bayar=Str::random(14);
         $id_tanggal=Str::random(15);
