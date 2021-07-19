@@ -27,7 +27,6 @@
             </form>
           <div class="card">  
           @foreach ($tanggal as $a)
-            
               <div class="card">
                 <div class="card-header">
                   {{date('d F Y',strtotime($a->tanggal))}}

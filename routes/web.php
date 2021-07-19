@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BayarController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
@@ -34,5 +35,10 @@ Route::group(['middleware'=>['auth','role:2']],function(){
     Route::get('/lap/{id}',[UserController::class,'lapangan']);
     Route::get('/logout',[LoginController::class,'logout']);
     Route::get('/bayar/{id}',[BayarController::class,'bayar']);
+});
+
+Route::group(['middleware'=>['auth','role:1']],function(){
+    Route::get('/dashboard/admin',[AdminController::class,'index']);
+    Route::get('/konfirmasi/{id}',[AdminController::class,'konfirmasi']);
 });
 

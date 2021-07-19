@@ -14,7 +14,7 @@ class LoginController extends Controller
         if(Auth::attempt(['email' => $req->email, 'password' => $req->pass])){
             $role=Auth::user()->role;
             if($role==1){
-                return redirect('/dashboard');
+                return redirect('/dashboard/admin');
             }else{
                 return redirect('/home');
                 

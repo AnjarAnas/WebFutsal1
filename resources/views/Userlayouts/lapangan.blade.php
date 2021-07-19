@@ -65,6 +65,9 @@
                 <input type="text" placeholder="Uang Book" name="uang" class="form-control currency" onkeyup="convertToRupiah(this);">
               </div>
             </div>
+            <div class="text-right">
+              <span class="font-weight-bold">Note : Harga Sewa Lapangan Plaster Rp. 60.000</span>
+            </div>
             <hr>
             <div class="text-center mt-5">
               <button class="btn btn-primary btn-lg col-6" style="border-radius: 1rem">Booking</button>
@@ -164,7 +167,9 @@
                   <input type="text" placeholder="Uang Book" name="uang" class="form-control currency" onkeyup="convertToRupiah(this);">
                 </div>
               </div>
-            
+              <div class="text-right">
+                <span class="font-weight-bold">Note : Harga Sewa Lapangan Sentetis Rp. 120.000</span>
+              </div>
             <hr>
             <div class="text-center mt-5">
               <button class="btn btn-primary btn-lg col-6" type="submit" style="border-radius: 1rem">Booking</button>
