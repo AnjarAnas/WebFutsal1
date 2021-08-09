@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'login']);
-
+Route::get('/logout',[LoginController::class,'logout']);
+Route::get('/delete/pesan/{id}',[UserController::class,'hapusPesan']);
 
 Route::group(['middleware'=>['auth','role:2']],function(){
     Route::get('/maps', function () {
@@ -33,12 +34,16 @@ Route::group(['middleware'=>['auth','role:2']],function(){
     Route::post('/actionbook',[UserController::class,'book']);
     Route::get('/book',[UserController::class,'dataBook']);
     Route::get('/lap/{id}',[UserController::class,'lapangan']);
-    Route::get('/logout',[LoginController::class,'logout']);
     Route::get('/bayar/{id}',[BayarController::class,'bayar']);
 });
 
 Route::group(['middleware'=>['auth','role:1']],function(){
     Route::get('/dashboard/admin',[AdminController::class,'index']);
+    
     Route::get('/konfirmasi/{id}',[AdminController::class,'konfirmasi']);
+    Route::get('/cari',[AdminController::class,'cari']);
+    Route::get('/user',[AdminController::class,'user']);
+    Route::get('/pendapatan',[AdminController::class,'dapat']);
+
 });
 

@@ -17,12 +17,18 @@
             @if (session('bayar'))
             <div class="text-center p-4">
                 <button class="btn btn-primary btn-lg col-6" id="pay-button" type="submit" style="border-radius: 1rem">Booking</button>
+                <div class="text-right">
+                  <div class="badge badge-secondary m-3" style="color: black">
+                    Note : Jika sudah selesai melakukan pembayaran silahkan refresh page ini
+                  </div>
+                  
+                </div>
               </div>
             @elseif(session('sudah'))
             <div class="alert alert-success">
-                Pesanan sedang diproses
+                Pesanan sedang diproses, Silahkan Tekan Ini <a href="/book" class="btn btn-secondary">Book</a>
             </div>
-            @else
+            @elseif(session('proses'))
             <div class="table-responsive">
                 <table class="table">
                   <tr><td>VA</td><td>{{$va}}</td></tr>

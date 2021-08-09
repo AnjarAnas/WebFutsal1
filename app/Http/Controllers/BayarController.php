@@ -60,7 +60,7 @@ class BayarController extends Controller
                 $this->token = \Midtrans\Snap::getSnapToken($params); 
                 session()->flash('bayar','iya');
                 return view('Userlayouts.bayar',['token'=>$this->token,'bayar'=>$bayar]);
-            }else if($bayar[0]->status=="Dalam Proses" || $bayar[0]->status=="settlement"){
+            }else if($bayar[0]->status=="Dalam Proses" || $bayar[0]->status=="settlement" || $bayar[0]->status=="Sudah Dikonfirmasi"){
                 // $status=Transaction::status($id);
                 // dd($status);
                 \Midtrans\Config::$serverKey = 'SB-Mid-server-ZEJZWgdliopUKuEZFZvsYs8F';

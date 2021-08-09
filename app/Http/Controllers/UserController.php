@@ -73,6 +73,7 @@ class UserController extends Controller
                 'tanggal'=>$req->tgl,
                 'id_user'=>Auth::user()->id_user,
                 'kondisi'=>1,
+                'bulan'=>date('F',strtotime($req->tgl)),
                 'nama'=>$req->nama,
                 'id_lap'=>$req->id_lap
             ]);

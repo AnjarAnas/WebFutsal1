@@ -3,13 +3,10 @@
 <section class="section">
     <div class="section-header">
       <h1>Data Book</h1>
-      
     </div>
-
     <div class="section-body">
       <h2 class="section-title">Data Book</h2>
       <p class="section-lead">Example of some Bootstrap table components.</p>
-
       <div class="row">
         <div class="col-md-12 ">
           <div class="card">
@@ -42,20 +39,19 @@
                             <div class="badge badge-success"><span id="demo{{$b->id_bayar}}"></span></div></td>
                             @elseif ($b->status=="Belum Dibayar")
                             <div class="badge badge-success"><span id="demo{{$b->id_bayar}}"></span></div></td>
-                            @elseif ($b->status="settlement")
-                            <div class="badge badge-success">{{$b->status}}</div></td>
+                            @else
+                            <div class="badge badge-success">-----</div></td>
                             @endif
-                            
                           <td>{{date('d F Y',strtotime($b->tanggal))}}</td>
                           <td>
                            @if ($b->status=="Dalam Proses" || $b->status=="Belum Dibayar")
                            <div class="badge badge-danger">{{$b->status}}</div>
-                           @else
+                           @elseif($b->status=="settlement")
                            <div class="badge badge-success">Sudah Dibayar</div>
+                           @else
+                           <div class="badge badge-success">Sudah Dikonfirmasi</div>
                            @endif
-                            
                           </td>
-                          
                           <td>
                             @if ($b->status=="Dalam Proses")
                             <a href="/bayar/{{$b->id_bayar}}" class="btn btn-warning" style="border-radius: 10px">Status</a>
@@ -66,7 +62,6 @@
                             @endif
                             </td>
                       </tr>
-
                   @endforeach
                 </table>
               </div>
@@ -76,17 +71,16 @@
             </div>
           </div>
         </div>
-        
       </div>
     </div>
 </section>
 
   @foreach ($bayar as $b)
   <script>
-  var countDownDate{{$b->id_bayar}} = new Date("{{$b->deadline}}").getTime();
-  
-  // Update the count down every 1 second
-  var x = setInterval(function() {
+    var countDownDate{{$b->id_bayar}} = new Date("{{$b->deadline}}").getTime();
+    
+    // Update the count down every 1 second
+    var x = setInterval(function() {
   
     // Get today's date and time
     var now = new Date().getTime();
