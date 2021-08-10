@@ -26,7 +26,7 @@
             
 
             <div class="card card-primary">
-              <div class="card-header"><h4>Login</h4></div>
+              <div class="card-header"><h4>Register</h4></div>
 
               <div class="card-body">
                 @if (session('gagal'))
@@ -34,11 +34,16 @@
                       {{session('gagal')}}
                     </div>
                 @endif
-                <form method="POST" action="/login" class="needs-validation" novalidate="">
+                <form method="POST" action="/prosesregis" class="needs-validation" novalidate="">
                     @csrf
                   <div class="form-group">
+                    <label for="email">Nama</label>
+                    <input id="email" type="text" class="form-control" name="nama" tabindex="1" required autofocus>
+                    
+                  </div>
+                  <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                    <input id="email" type="email" class="form-control" name="email" tabindex="1" required>
                     
                   </div>
                   <div class="form-group mb-4">
@@ -53,18 +58,28 @@
                           </div>
                       </div>
                   </div>
+                  <div class="form-group mb-4">
+                    <label for="pass">Repeat Password</label>
+                  <div class="input-group">
+                      
+                      <input type="password" id="ver_pass" name="ver_pass" class="form-control pwstrength" data-indicator="pwindicator">
+                      <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <img src="{{asset('assets/img/kunci.svg')}}" onclick="showPass1()" id='img1' alt="">
+                          </div>
+                        </div>
+                    </div>
+                </div>
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                      Login
+                      Register
                     </button>
                   </div>
                 </form>
-                
-
               </div>
             </div>
             <div class="mt-5 text-muted text-center">
-              Don't have an account? <a href="/register">Create One</a>
+              Have An Account? <a href="/">Login</a>
             </div>
            
           </div>
@@ -94,6 +109,22 @@
     function showPass(){
         var pass=document.getElementById("pass");
         var img=document.getElementById("img");
+        if(pass.type==="password"){
+            img.src="{{asset("assets/img/kunci_open.svg")}}";
+            pass.type="text";
+        }
+        else{
+            img.src="{{asset("assets/img/kunci.svg")}}";
+            pass.type="password";
+          
+        }
+        
+    }
+  </script>
+  <script>
+    function showPass1(){
+        var pass=document.getElementById("ver_pass");
+        var img=document.getElementById("img1");
         if(pass.type==="password"){
             img.src="{{asset("assets/img/kunci_open.svg")}}";
             pass.type="text";

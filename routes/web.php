@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BayarController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Role;
 use Illuminate\Auth\Events\Login;
@@ -22,7 +23,8 @@ Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'login']);
 Route::get('/logout',[LoginController::class,'logout']);
 Route::get('/delete/pesan/{id}',[UserController::class,'hapusPesan']);
-
+Route::get('/register',[RegisterController::class,'index']);
+Route::post('/prosesregis',[RegisterController::class,'register']);
 Route::group(['middleware'=>['auth','role:2']],function(){
     Route::get('/maps', function () {
         return view('Userlayouts.maps');

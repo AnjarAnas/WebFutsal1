@@ -29,6 +29,8 @@ class LoginController extends Controller
                 return redirect('/home');
                 
             }
+        }else{
+            return redirect('/')->with('gagal','Email atau password yang anda masukan salah');
         }
     }
     public function logout(){
