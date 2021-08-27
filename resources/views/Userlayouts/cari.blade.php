@@ -57,7 +57,6 @@
                         
                         </tr>
                         @endif
-        
                         @endforeach
                       @else
                           <div class="alert alert-success">Tanggal yang anda cari belum ada yang booking</div>
@@ -65,7 +64,6 @@
                       
                     </table>
                   </div>
-                
               </div>
           </div>
         </div>

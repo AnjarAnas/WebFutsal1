@@ -21,10 +21,11 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'login']);
-Route::get('/logout',[LoginController::class,'logout']);
-Route::get('/delete/pesan/{id}',[UserController::class,'hapusPesan']);
+
+
 Route::get('/register',[RegisterController::class,'index']);
 Route::post('/prosesregis',[RegisterController::class,'register']);
+
 Route::group(['middleware'=>['auth','role:2']],function(){
     Route::get('/maps', function () {
         return view('Userlayouts.maps');
@@ -47,5 +48,9 @@ Route::group(['middleware'=>['auth','role:1']],function(){
     Route::get('/user',[AdminController::class,'user']);
     Route::get('/pendapatan',[AdminController::class,'dapat']);
 
+});
+Route::group(['middleware'=>['auth','role:1,2']],function(){
+    Route::get('/logout',[LoginController::class,'logout']);
+    Route::get('/delete/pesan/{id}',[UserController::class,'hapusPesan']);
 });
 

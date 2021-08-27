@@ -74,32 +74,18 @@
       </div>
     </div>
 </section>
-
   @foreach ($bayar as $b)
   <script>
     var countDownDate{{$b->id_bayar}} = new Date("{{$b->deadline}}").getTime();
-    
-    // Update the count down every 1 second
     var x = setInterval(function() {
-  
-    // Get today's date and time
     var now = new Date().getTime();
-  
-    // Find the distance between now and the count down date
     var distance{{$b->id_bayar}} = countDownDate{{$b->id_bayar}} - now;
-  
-    // Time calculations for days, hours, minutes and seconds
     var days{{$b->id_bayar}} = Math.floor(distance{{$b->id_bayar}} / (1000 * 60 * 60 * 24));
     var hours{{$b->id_bayar}} = Math.floor((distance{{$b->id_bayar}} % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes{{$b->id_bayar}} = Math.floor((distance{{$b->id_bayar}} % (1000 * 60 * 60)) / (1000 * 60));
     var seconds{{$b->id_bayar}} = Math.floor((distance{{$b->id_bayar}} % (1000 * 60)) / 1000);
-  
-    // Display the result in the element with id="demo"
     document.getElementById("demo{{$b->id_bayar}}").innerHTML = days{{$b->id_bayar}} + "d " + hours{{$b->id_bayar}} + "h "
     + minutes{{$b->id_bayar}} + "m " + seconds{{$b->id_bayar}} + "s ";
-   
-  
-    // If the count down is finished, write some text
     if (distance{{$b->id_bayar}} < 0) {
       if("{{$b->status}}"==="Belum Dibayar" || "{{$b->status}}"==="Dalam Proses"){
         document.getElementById("demo{{$b->id_bayar}}").innerHTML = "EXPIRED";
@@ -108,21 +94,15 @@
           type: "get",
           url: "/delete/pesan/{{$b->id_bayar}}",
           data: {
-            
           },
           dataType: "json",
           success: function (response) {
             console.log(response.sukses);
           }
         });
-        
       }
-      
     }
   }, 1000);
 </script>
   @endforeach
-
-  
-  
 @endsection

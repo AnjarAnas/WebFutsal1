@@ -10,4 +10,5 @@ class Lapangan extends Model
     use HasFactory;
     protected $table='lapangan';
     protected $guarded=[];
+    
 }

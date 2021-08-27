@@ -73,26 +73,6 @@
               <button class="btn btn-primary btn-lg col-6" style="border-radius: 1rem">Booking</button>
             </div>
               </form>
-              {{-- @foreach ($tanggal as $a)
-              <div class="card">
-                <div class="card-header">
-                  {{date('d F Y',strtotime($a->tanggal))}}
-                </div>
-                <div class="card-body">
-                  @foreach ($detail as $d)
-                  @if ($a->tanggal==$d->tanggal)
-                    <div class="card">
-                      <div class="card-header">{{$d->nama}}</div>
-                      <div class="card-body">
-                        {{$d->waktu}}
-                      </div>
-                    </div>
-                  @endif
-                  @endforeach
-                </div>
-              </div>
-              
-              @endforeach --}}
           </div>
         </div>
       </div>
@@ -175,26 +155,6 @@
               <button class="btn btn-primary btn-lg col-6" type="submit" style="border-radius: 1rem">Booking</button>
             </div>
           </form>
-          {{-- @foreach ($tanggal as $a)
-              <div class="card">
-                <div class="card-header">
-                  {{date('d F Y',strtotime($a->tanggal))}}
-                </div>
-                <div class="card-body">
-                  @foreach ($detail as $d)
-                  @if ($a->tanggal==$d->tanggal)
-                    <div class="card">
-                      <div class="card-header">{{$d->nama}}</div>
-                      <div class="card-body">
-                        {{$d->waktu}}
-                      </div>
-                    </div>
-                  @endif
-                  @endforeach
-                </div>
-              </div>
-              
-              @endforeach --}}
           </div>
           
         </div>

@@ -28,7 +28,7 @@ class UserController extends Controller
         return view('Userlayouts.lapangan',['id'=>$id,'waktu'=>$waktu,'tanggal'=>$tanggal,'detail'=>$detail]);
     }
     public function jadwal($id){
-        $tanggal=DB::table('tanggal')->select('tanggal')->distinct()->where('tanggal','>=',date('Y-m-d'))->get();
+        $tanggal=DB::table('tanggal')->select('tanggal')->distinct()->where([['tanggal','>=',date('Y-m-d')],['id_lap',$id]])->get();
         // dd($tanggal);
         $detail=DB::table('pembayaran')
         ->join('tanggal','pembayaran.id_tanggal','=','tanggal.id_tanggal')
@@ -64,7 +64,8 @@ class UserController extends Controller
         if(date('Y-m-d')<=$req->tgl){
             foreach($tanggal as $a){
                 if($a->tanggal==$req->tgl && $a->waktu==$waktu[0]->waktu && $a->id_lap==$req->id_lap){
-                    return redirect('/lap/'.$req->id_lap)->with('gagal','Tanggal Atau Waktu Sudah Tidak Tersedia, Silahkan Klick Tombol Jadwal Lapangan');
+                    return redirect('/lap/'.$req->id_lap)
+                    ->with('gagal','Tanggal Atau Waktu Sudah Tidak Tersedia, Silahkan Klick Tombol Jadwal Lapangan');
                 }
             }
             $tanggal=Tanggal::create([

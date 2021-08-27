@@ -38,10 +38,19 @@
                   
                   
                   <tr><td>Waktu Transaksi</td><td>{{date('d M Y G:i:s',strtotime($waktu))}}</td></tr>
-                  <tr><td>Waktu Bayar</td><td>@if($status=="settlement"){{date('d M Y G:i:s',strtotime($waktu_bayar))}}@else --- @endif</td></tr>
-                  <tr><td> Status</td><td> @if($status=="settlement")<span class="badge badge-success">Pesanan Sudah Dibayar</span>@else<span class="badge badge-danger">Pesanan Belum Dibayar</span>@endif</td></tr>
+                  <tr>
+                    <td>Waktu Bayar</td>
+                    <td>@if($status=="settlement"){{date('d M Y G:i:s',strtotime($waktu_bayar))}}@else --- @endif</td></tr>
+                  <tr><td> Status</td><td> 
+                    @if($status=="settlement")<span class="badge badge-success">Pesanan Sudah Dibayar</span>
+                    @else<span class="badge badge-danger">Pesanan Belum Dibayar</span>@endif</td></tr>
                   @if ($bayar[0]->status=="settlement")
-                      <tr><td>Note</td><td><span class="badge badge-danger">Silahkan Datang 10 menit sebelum Pertandingan Dimulai </span></td></tr>
+                      <tr>
+                        <td>Note</td>
+                        <td>
+                          <span class="badge badge-danger">Silahkan Datang 10 menit sebelum Pertandingan Dimulai </span>
+                        </td>
+                      </tr>
                   @endif
                  </table>
               </div>
@@ -49,28 +58,7 @@
             
             <form id="payment-form" action="Payment" method="get">
                 <input type="hidden" name="result" value="" id="resultdata">
-                
               </form>
-          {{-- @foreach ($tanggal as $a)
-              <div class="card">
-                <div class="card-header">
-                  {{date('d F Y',strtotime($a->tanggal))}}
-                </div>
-                <div class="card-body">
-                  @foreach ($detail as $d)
-                  @if ($a->tanggal==$d->tanggal)
-                    <div class="card">
-                      <div class="card-header">{{$d->nama}}</div>
-                      <div class="card-body">
-                        {{$d->waktu}}
-                      </div>
-                    </div>
-                  @endif
-                  @endforeach
-                </div>
-              </div>
-              
-              @endforeach --}}
           </div>
           
         </div>
@@ -100,7 +88,7 @@
         changeResult('pending',result);
         $("#payment-form").submit();
       }
-    }); // Replace it with your transaction token
+    }); 
   });
   
 </script>
@@ -110,7 +98,4 @@
 </script>
 <script src="{{asset('assets/js/rupiah.js')}}">
 </script>
-
-
-
 @endsection
